@@ -31,10 +31,10 @@ fun main() {
         val inputAmount = readln().toDouble()
     }
 
-    calculateCommission(selectedCard,totalSum,inputAmount)
+    println(calculateCommission(selectedCard,totalSum,inputAmount))
 }
 
-fun calculateCommission(selectedCard: Int, totalSum: Double, inputAmount: Double) {
+fun calculateCommission(selectedCard: Int, totalSum: Double, inputAmount: Double) : String {
 
     val MAX_SUM_ONETIME = 75_000.0
     val MAX_SUM_DAY = 150_000.0
@@ -43,15 +43,17 @@ fun calculateCommission(selectedCard: Int, totalSum: Double, inputAmount: Double
     val VK_MONTH_LIMIT = 40_000.0
     var commission = 0.0
 
-    when (selectedCard) {
+    var stringCommission = when (selectedCard) {
         1 -> {
             if (inputAmount < MAX_SUM_DAY && (totalSum + inputAmount) < MAX_SUM_MONTH) {
                 if (inputAmount + totalSum < MAX_SUM_ONETIME) {
                     commission = 0.0
-                    println("Комиссия составляет: ${commission.toInt()}")
+                    return "Комиссия составляет: ${commission.toInt()}"
+                } else {
+
                 }
             } else {
-                println("Лимит превышен")
+                return "Лимит превышен"
             }
         }
 
@@ -59,40 +61,46 @@ fun calculateCommission(selectedCard: Int, totalSum: Double, inputAmount: Double
             if (inputAmount < MAX_SUM_DAY && (totalSum + inputAmount) < MAX_SUM_MONTH) {
                 if (inputAmount + totalSum < MAX_SUM_ONETIME) {
                     commission = 0.0
-                    println("Комиссия составляет: ${commission.toInt()}")
+                    return "Комиссия составляет: ${commission.toInt()}"
+                } else {
+
                 }
             } else {
-                println("Лимит превышен")
+                return "Лимит превышен"
             }
         }
 
         3 -> {
             if (inputAmount < MAX_SUM_DAY && (totalSum + inputAmount) < MAX_SUM_MONTH) {
                 if (commission < 35.0) {
-                    print("Ваша комиссия составляет: ${(commission).toInt()}")
+                    return "Ваша комиссия составляет: ${(commission).toInt()}"
+                } else {
+
                 }
             } else {
-                println("Лимит превышен")
+                return "Лимит превышен"
             }
         }
 
         4 -> {
             if (inputAmount < MAX_SUM_DAY && totalSum < MAX_SUM_MONTH) {
                 if (commission < 35.0) {
-                    print("Ваша комиссия составляет: ${(commission).toInt()}")
+                    return "Ваша комиссия составляет: ${(commission).toInt()}"
                 }
-                print("Комиссия составляет: ${(commission).toInt()}")
+                return "Комиссия составляет: ${(commission).toInt()}"
             } else {
-                println("Лимит превышен")
+                return "Лимит превышен"
             }
         }
 
         5 -> {
             if (inputAmount < VK_ONETIME_LIMIT && (inputAmount + totalSum) < VK_MONTH_LIMIT) {
-                println("Комиссия составялет 0 рублей")
+                return "Комиссия составялет 0 рублей"
             } else {
-                println("Лимит превышен")
+                return "Лимит превышен"
             }
         }
+        else -> {}
     }
+    return stringCommission.toString()
 }
