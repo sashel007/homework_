@@ -69,7 +69,6 @@ fun calculateCommission(selectedCard: Int, totalSum: Double, inputAmount: Double
                 return "Лимит превышен"
             }
         }
-
         3 -> {
             if (inputAmount < MAX_SUM_DAY && (totalSum + inputAmount) < MAX_SUM_MONTH) {
                 val commission = inputAmount * 0.075

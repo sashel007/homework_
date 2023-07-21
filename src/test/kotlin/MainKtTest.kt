@@ -228,6 +228,7 @@ class MainKtTest {
             selectedCard = selectedCard,
             totalSum = totalSum,
             inputAmount = inputAmount
+
         )
         val expected = "Лимит превышен"
         assertEquals(expected, result)
