@@ -34,7 +34,7 @@ fun main() {
     println(calculateCommission(selectedCard,totalSum,inputAmount))
 }
 
-fun calculateCommission(selectedCard: Int, totalSum: Double, inputAmount: Double) : String {
+fun calculateCommission(selectedCard: Int, totalSum: Double, inputAmount: Double, commission: Double? = null) : String {
 
     val MAX_SUM_ONETIME = 75_000.0
     val MAX_SUM_DAY = 150_000.0
@@ -50,7 +50,7 @@ fun calculateCommission(selectedCard: Int, totalSum: Double, inputAmount: Double
                     commission = 0.0
                     return "Комиссия составляет: ${commission.toInt()}"
                 } else {
-
+                    return "Лимит превышен"
                 }
             } else {
                 return "Лимит превышен"
@@ -63,7 +63,7 @@ fun calculateCommission(selectedCard: Int, totalSum: Double, inputAmount: Double
                     commission = 0.0
                     return "Комиссия составляет: ${commission.toInt()}"
                 } else {
-
+                    return "Лимит превышен"
                 }
             } else {
                 return "Лимит превышен"
@@ -72,22 +72,17 @@ fun calculateCommission(selectedCard: Int, totalSum: Double, inputAmount: Double
 
         3 -> {
             if (inputAmount < MAX_SUM_DAY && (totalSum + inputAmount) < MAX_SUM_MONTH) {
-                if (commission < 35.0) {
-                    return "Ваша комиссия составляет: ${(commission).toInt()}"
-                } else {
-
-                }
+                val commission = inputAmount * 0.075
+                return "Ваша комиссия составляет: ${(commission).toInt()}"
             } else {
                 return "Лимит превышен"
             }
         }
 
         4 -> {
-            if (inputAmount < MAX_SUM_DAY && totalSum < MAX_SUM_MONTH) {
-                if (commission < 35.0) {
-                    return "Ваша комиссия составляет: ${(commission).toInt()}"
-                }
-                return "Комиссия составляет: ${(commission).toInt()}"
+            if (inputAmount < MAX_SUM_DAY && (totalSum + inputAmount) < MAX_SUM_MONTH) {
+                val commission = inputAmount * 0.075
+                return "Ваша комиссия составляет: ${(commission).toInt()}"
             } else {
                 return "Лимит превышен"
             }
