@@ -205,7 +205,7 @@ class MainKtTest {
 
     @Test
     fun testcalculateCommissionReturn44() {
-        val selectedCard = 4
+        val selectedCard = 6
         val totalSum = 700_000.0
         val inputAmount = 2_000.0
 
